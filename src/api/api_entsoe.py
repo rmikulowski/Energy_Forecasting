@@ -1,9 +1,14 @@
 import requests
 import xmltodict
-import json
-import pprint
 import pandas as pd
 from datetime import timedelta
+import configparser
+import os
+
+# CONFIG
+config = configparser.ConfigParser()
+api_filename = os.path.dirname(os.path.dirname(os.getcwd())) + "\\api.cfg"
+config.read(api_filename)
 
 processtype = {
     'A25':	'GeneralCapacityInformation',
@@ -88,7 +93,7 @@ if __name__ == "__main__":
     Output: csv file to be analysed, saved in 'data/outputs' directory.
     """
 
-    APP_ID = 'cd8576a8-7ef2-4fdc-a25d-5dc464028b03'
+    APP_ID = list(config['ENTSOE'].values())[0]
     PATH = 'https://transparency.entsoe.eu/api?securityToken='
 
     START_TIME = 201512312300
