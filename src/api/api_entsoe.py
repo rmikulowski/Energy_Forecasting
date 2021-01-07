@@ -117,4 +117,4 @@ if __name__ == "__main__":
             values.append(j_value)
 
     final_data = pd.DataFrame(index = time_indices, data = values)
-    final_data.to_csv(f'./data/outputs/{DOCUMENT_TYPE}_{PROCESS_TYPE}_{ZONE}_{START_TIME}_{END_TIME}.csv')
+    final_data.to_csv(f'./data/cleaned/{DOCUMENT_TYPE}_{PROCESS_TYPE}_{ZONE}_{START_TIME}_{END_TIME}.csv')
