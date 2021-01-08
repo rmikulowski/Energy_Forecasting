@@ -19,6 +19,17 @@ import itertools
 # As it presents much worse solutions than Prophet, it wasn't used.
 # Hyperparameters were chosen by previously done grid search method.
 
+def mean_absolute_percentage_error(y_true, y_pred):
+    y_true, y_pred = np.array(y_true), np.array(y_pred)
+    return np.mean(np.abs((y_true - y_pred) / y_true))
+
+def plot_mean_and_CI(mean, lb, ub, color_mean=None, color_shading=None):
+    # plot the shaded range of the confidence intervals
+    plt.fill_between(range(mean.shape[0]), ub, lb,
+                     color=color_shading, alpha=.5)
+    # plot the mean on top
+    plt.plot(mean, color_mean)
+
 def forecast_prices(gas_data,
                     data_since = '2012-01-01', 
                     data_till = '2012-12-31',
